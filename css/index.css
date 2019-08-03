@@ -1,0 +1,289 @@
+ /*main部分 start*/
+.jd{
+    height: 480px;
+   /* background-color: pink;*/
+    position: relative;     /*子绝父相*/
+}
+.jd-inner{
+    height: 480px;
+ /*   background-color: skyblue;*/
+    position: relative; /*用相对定位较合适，相对定位不会转为行内块，不用加宽*/      
+    z-index: 999;                       
+    }                   /*只有定位的盒子才有 z-index*/
+                       /*提高层级*/
+/* 广告部分 */
+.ad{
+    height: 480px;
+    background: url(../images/bg.png) no-repeat top center; /*超大背景图，几乎都这样写位置*/
+    position: absolute;
+    top: 0;
+    left: 0;    
+    width: 100%;    /*强制给宽度*/
+                    /*没加定位时，宽度可以不加，由图片撑开。但加之后会转为行内块，行内块宽度由内容定*/
+}                   /*定位中，盒子不加宽度，背景图片也不撑开盒子*/
+.ad a{
+    display: block; /*此处链接只在左右两侧显示，版心不显示，所以要提高版心层级（因为a覆盖了版心jd-inner）*/
+    height: 100%;   /*给高就好了，因为转为块级元素，宽度默认是通栏了*/
+}
+
+.jd-clo1{
+    width: 190px;
+    height: 465px;
+    background-color: #6E6568;
+    float: left;
+	padding-top: 15px;
+}
+.jd-clo2{
+    width: 790px;
+    height: 480px;
+  /*  background-color: green;*/
+    float: left;
+    margin-left: 10px;  /*这里浮动不会影响左右的margin*/
+}
+.jd-clo3{
+    width: 190px;
+    height: 480px;
+  /*  background-color: yellow;*/
+    float: right;
+}
+.jd-clo3 a{
+	font-size: 12px;
+	color: #747474;	
+}
+.jd-clo1 li{
+	padding-left: 10px;
+	height: 25px;
+	line-height: 25px;
+}
+.jd-clo1 li:hover{
+	background-color: #999395;
+}
+.jd-clo1 a{
+	color: #fff;
+	font-size: 14px;
+}
+.jd-clo1 a:hover{
+	color: #c81623;
+}
+.jd-clo1  li span{
+	color: #fff;
+	font-size: 12px;
+}
+
+/* 轮播图*/
+.jd-clo2-hd{
+	height: 340px;
+	/*background-color: pink;*/
+	margin-bottom: 10px;
+	position: relative;
+}
+.jd-clo2-bt div{
+	width: 390px;
+	height: 130px;	
+	float: left;
+}
+.jd-clo2-bt  div img{
+	width: 100%;		/*高度不用动，儿子的高度跟父亲一样宽，是等比缩放*/
+}
+.firstpic{
+	margin-right: 10px;
+}
+.arr-l, .arr-r{
+	position: absolute;
+	top: 50%;
+	margin-top: -30px;
+	width: 30px;
+	height: 60px;
+	font-family: "icomoon";
+	font-size: 25px;
+	color: #fff;
+	background: rgba(0, 0, 0, 0.3);
+	text-align: center;
+	line-height: 60px;
+}
+.arr-l{
+	left: 0;
+}
+.arr-r{
+	right: 0;
+}
+.jd-clo2-hd ol{
+	height: 20px;
+	width: 180px;	/*绝对定位，会变成行内块，又没内容前提下，会看不见他*/
+	background: rgba(255, 255, 255, 0.3);
+	position: absolute;
+	left: 50%;
+	margin-left: -90px;
+	bottom: 20px;
+	border-radius: 10px;
+}
+.jd-clo2-hd ol li{
+	width: 12px;
+	height: 12px;
+	background-color: #fff;
+	float: left;
+	border-radius: 50%;
+	margin: 4px 5px;
+	cursor: pointer;    /*小手*/
+}
+.jd-clo2-hd .current{	/*注意提高权重*/
+	background-color: #f10215;
+}
+.user{
+	height: 95px;
+	/* background-color: pink; */	
+	padding: 20px 15px 0;
+}
+.user-info{
+	height: 40px;
+	padding-left: 54px;
+	font-size: 12px;
+	color: #747474;
+	line-height: 22px;
+	position: relative;
+}
+.user-info a{
+	font-size: 12px;
+	color: #747474;	
+}
+.user-info a:hover{
+	color: #f10215;
+}
+.info-img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;	/*此时不会显示圆角，要使用溢出隐藏，强制显示*/
+	overflow: hidden;
+}
+.info-img img{
+	width: 100%;	/*等比缩放*/
+	height: auto;	/*自动  跟随宽度缩放  网页一般这样用*/
+}
+.user-profit{
+	margin-top: 14px;
+}
+.user-profit a{
+	color: #f10215;
+	font-size: 12px;
+	display: inline-block;	/*记得转换*/
+	width: 70px;
+	height: 20px;
+	border: 2px solid #f10215;
+	text-align: center;
+	line-height: 20px;
+	margin-right: 3px;
+}
+.user-profit a:hover{
+	color: #fff;
+	background-color: #f10215;
+}
+
+/* tab栏 */
+.news{
+	height: 149px;
+/*	background-color: skyblue;	*/
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding: 5px 15px 0;	/*因为没给宽，只用减top就可以 154-5=149*/
+}
+.tab-hd{
+	border-bottom: 1px solid #ccc;
+	padding: 3px 0;
+	position: relative;
+}
+.tab-hd a{
+	margin: 0 4px;
+}
+.cuxiao{
+	border-right: 1px solid #ccc;
+	padding-right: 10px;
+}
+.news .more1{
+	position: absolute;
+	top: 7px;
+	right: 0;
+}
+.line{				/*这根可以移动的线，一定用绝对定位*/
+	width: 28px;
+	height: 2px;
+	background-color: #f10215;
+	position: absolute;
+	left: 0;
+	bottom: -1px;
+}
+.tab-bd{
+	margin-top: 10px;
+}
+.tab-bd li{
+	height: 23px;
+	line-height: 23px;
+}
+.jd-service{
+	height: 209px;
+/*	background-color: pink;	*/
+	overflow: hidden;
+}
+.jd-service ul{
+	width: 195px;
+}
+.jd-service li{
+	width: 47px;
+	height: 69px;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	float: left;
+}
+.jd-service li a{
+	display: block;	
+	width: 100%;
+	height: 100%;	/*要给a宽高，因为a里面有图，根据父亲的大小改*/
+/*	height: auto;  这是根据自己高度和宽度改变*/
+}
+
+.jd-service i{
+	display: block;	/*行内元素，记得转换*/
+	width: 24px;
+	height: 24px;
+	margin: 15px auto 8px;
+	background: url(../images/sprite_fs@1x.png) no-repeat 0 -87px;
+}
+.jd-service .jipiao{
+	background-position: 0 -44px;
+}
+.jd-service .jiudian{
+	background-position: -45px -88px;
+}
+.jd-service .huochepiao{
+	background-position: -89px -88px;
+}
+.jd-service .qiyegou{
+	background-position: -88px -45px;
+}
+.jd-service .jiayouka{
+	background-position: 0 0;
+}
+.jd-service .dianyingpiao{
+	background-position: -45px -45px;
+}
+.jd-service .youxi{
+	background-position: -88px 0;
+}
+.jd-service .zongchou{
+	background-position: -132px 0;
+}
+.jd-service .licai{
+	background-position: -132px -45px;
+}
+.jd-service .lipinka{
+	background-position: -132px -90px;
+}
+.jd-service .baitiao{
+	background-position: -45px 0;
+}
+.jd-service p{
+	text-align: center;
+}
+/*main部分 end*/
